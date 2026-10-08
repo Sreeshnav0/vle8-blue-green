@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: blue-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: vle8
+      color: blue
+  template:
+    metadata:
+      labels:
+        app: vle8
+        color: blue
+    spec:
+      containers:
+        - name: blue-container
+          image: vle8-blue:1.0
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 80
